@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meu Audiobook</string>
+    <string name="app_subtitle">Seus audiolivros, com player em segundo plano</string>
+    <string name="add_audiobook">Adicionar</string>
+    <string name="now_playing">Reproduzindo</string>
+    <string name="chapters">Capítulos</string>
+    <string name="sleep_timer">Dormir</string>
+    <string name="speed">Velocidade</string>
+    <string name="cancel">Cancelar</string>
+    <string name="remove_book">Remover audiolivro</string>
+    <string name="remove_confirm">Remover \"%1$s\" da sua biblioteca?</string>
+    <string name="remove">Remover</string>
+    <string name="no_audio_selected">Nenhum áudio selecionado</string>
+    <string name="added_book">Audiolivro adicionado</string>
+    <string name="chapter_of">Parte %1$d de %2$d</string>
+    <string name="local_files">Arquivos locais</string>
+    <string name="pick_files">Escolha um ou mais arquivos de áudio</string>
+    <string name="play">Reproduzir</string>
+    <string name="pause">Pausar</string>
+    <string name="back_15">Voltar 15 segundos</string>
+    <string name="forward_15">Avançar 15 segundos</string>
+    <string name="previous_chapter">Capítulo anterior</string>
+    <string name="next_chapter">Próximo capítulo</string>
+    <string name="sleep_off">Desativado</string>
+    <string name="sleep_minutes">%1$d minutos</string>
+    <string name="sleep_remaining">Dorme em %1$s</string>
+    <string name="notification_channel">Reprodução</string>
+</resources>
