@@ -7,11 +7,9 @@ import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.session.DefaultMediaNotificationProvider
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSessionService
 import com.meuaudiobook.app.PlayerActivity
-import com.meuaudiobook.app.R
 import com.meuaudiobook.app.data.ProgressStore
 
 /**
@@ -62,11 +60,6 @@ class PlaybackService : MediaSessionService() {
             }
         })
 
-        setMediaNotificationProvider(
-            DefaultMediaNotificationProvider.Builder(this)
-                .setSmallIcon(R.drawable.ic_notification)
-                .build()
-        )
     }
 
     override fun onGetSession(
