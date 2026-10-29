@@ -27,7 +27,14 @@ object Library {
     fun find(context: Context, id: String?): Book? =
         if (id == null) null else all(context).firstOrNull { it.id == id }
 
-    fun addLocalBook(context: Context, title: String, author: String, uris: List<String>): Book {
+    fun addLocalBook(
+        context: Context,
+        title: String,
+        author: String,
+        uris: List<String>,
+        durations: List<Long> = emptyList(),
+        coverUri: String? = null
+    ): Book {
         val id = "local-" + System.currentTimeMillis()
         val book = Book(
             id = id,
@@ -36,9 +43,14 @@ object Library {
             description = "",
             color = palette[(id.hashCode() and Int.MAX_VALUE) % palette.size],
             chapters = uris.mapIndexed { index, uri ->
-                Chapter("Faixa ${index + 1}", uri)
+                Chapter(
+                    title = "Faixa ${index + 1}",
+                    uri = uri,
+                    durationMs = durations.getOrNull(index) ?: 0L
+                )
             },
-            builtIn = false
+            builtIn = false,
+            coverUri = coverUri
         )
         val current = userBooks(context).toMutableList()
         current.add(book)
@@ -70,7 +82,8 @@ object Library {
                     description = obj.optString("description"),
                     color = obj.optInt("color"),
                     chapters = chapters,
-                    builtIn = false
+                    builtIn = false,
+                    coverUri = obj.optString("cover").takeIf { it.isNotBlank() }
                 )
             }
         } catch (_: Throwable) {
@@ -97,6 +110,7 @@ object Library {
                     .put("author", book.author)
                     .put("description", book.description)
                     .put("color", book.color)
+                    .put("cover", book.coverUri ?: "")
                     .put("chapters", chapters)
             )
         }

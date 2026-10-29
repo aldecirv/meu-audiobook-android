@@ -17,6 +17,7 @@ object SampleBooks {
             description = "Bentinho narra sua história e o amor por Capitu — gravação em domínio público (LibriVox).",
             color = 0xFF1F6F6B.toInt(),
             builtIn = true,
+            coverUri = "https://archive.org/services/img/dom_casmurro_2102_librivox",
             chapters = listOf(
                 Chapter("Parte 1", "https://archive.org/download/dom_casmurro_2102_librivox/domcasmurro_01_assis_64kb.mp3", 1191000L),
                 Chapter("Parte 2", "https://archive.org/download/dom_casmurro_2102_librivox/domcasmurro_02_assis_64kb.mp3", 985000L),
@@ -57,6 +58,7 @@ object SampleBooks {
             description = "O dr. Simão Bacamarte e a Casa Verde — gravação em domínio público (LibriVox).",
             color = 0xFF6B4E9B.toInt(),
             builtIn = true,
+            coverUri = "https://archive.org/services/img/o_alienista_0904_librivox",
             chapters = listOf(
                 Chapter("Parte 1", "https://archive.org/download/o_alienista_0904_librivox/oalienista_1_machadodeassis_64kb.mp3", 1027000L),
                 Chapter("Parte 2", "https://archive.org/download/o_alienista_0904_librivox/oalienista_2_machadodeassis_64kb.mp3", 799000L),

@@ -5,13 +5,18 @@ Player de audiolivros nativo para Android, com **reprodução em segundo plano**
 ## Recursos
 
 - **Biblioteca** com dois audiolivros de domínio público (LibriVox) e seus próprios arquivos;
-- **Player** com barra de progresso, avançar/voltar 15 s e troca de capítulo;
+- **Player** com barra de progresso, avançar/voltar configurável (10–60 s; padrão 15 s) e troca de capítulo;
 - **Reprodução em segundo plano** via `MediaSessionService` (Media3/ExoPlayer);
-- **Notificação** com play/pause, capítulos e barra de progresso;
+- **Notificação** com play/pause, capítulos, barra de progresso e botões ⏪/⏩;
 - **Velocidade** de 0,75× a 2×;
 - **Timer de sono** (15, 30, 45, 60 ou 90 minutos);
-- **Retomada automática** no capítulo e minuto em que você parou;
-- **Adicionar audiolivros locais** pelo seletor de arquivos do Android (SAF);
+- **Retomada automática** no capítulo e segundo exatos em que você parou;
+- **Porcentagem ouvida** do audiolivro na biblioteca e na tela de reprodução;
+- **Destaque vermelho** com barra de progresso no livro que está tocando;
+- **Marcação automática de “Ouvido”** ao terminar, com sugestão do próximo livro da fila;
+- **Cadeado de reprodução**: segure 3 segundos para desbloquear e evitar toques acidentais;
+- **Capas** dos audiolivros quando existirem nos arquivos/metadata (ou nas obras de exemplo);
+- **Adicionar audiolivros locais** pelo seletor de arquivos do Android (SAF), incluindo **OPUS**, MP3, M4A, OGG, FLAC e WAV;
 - Tema escuro com capas geradas a partir do título.
 
 ## Requisitos
@@ -66,4 +71,5 @@ app/src/main/java/com/meuaudiobook/app/
 ## Limitações
 
 - Os exemplos são **transmitidos** (streaming); não há download para ouvir offline (os arquivos locais que você adicionar funcionam offline);
-- A posição é salva ao pausar, trocar de capítulo ou sair do app.
+- A posição é salva ao pausar, trocar de capítulo ou sair do app — e também a cada 5 segundos durante a reprodução;
+- O progresso, a porcentagem, o cadeado e o intervalo dos saltos ficam salvos localmente (SharedPreferences) e funcionam sem internet.

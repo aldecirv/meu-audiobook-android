@@ -7,7 +7,11 @@ data class Chapter(
     val durationMs: Long = 0L
 )
 
-/** Um audiolivro: capítulos em ordem, capa gerada a partir da cor. */
+/**
+ * Um audiolivro: capítulos em ordem, capa gerada a partir da cor.
+ * [coverUri] é opcional e pode apontar para uma imagem embutida no arquivo
+ * (caminho local) ou para uma URL de capa (http/https).
+ */
 data class Book(
     val id: String,
     val title: String,
@@ -15,7 +19,8 @@ data class Book(
     val description: String,
     val color: Int,
     val chapters: List<Chapter>,
-    val builtIn: Boolean = false
+    val builtIn: Boolean = false,
+    val coverUri: String? = null
 ) {
     val initial: String
         get() = title.trim().firstOrNull()?.uppercase() ?: "?"

@@ -29,6 +29,34 @@
             android:text="@string/now_playing"
             android:textColor="@color/text_dim"
             android:textSize="14sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <!-- Intervalo configurável de avançar/retroceder -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSkip"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:minWidth="0dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:textColor="@color/accent"
+            android:textSize="13sp" />
+
+        <!-- Cadeado: bloqueia os controles contra toques acidentais -->
+        <ImageButton
+            android:id="@+id/btnLock"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/lock"
+            android:padding="12dp"
+            android:src="@drawable/ic_lock_open"
+            android:tint="@color/text" />
     </LinearLayout>
 
     <ScrollView
@@ -87,6 +115,17 @@
                 android:gravity="center"
                 android:textColor="@color/accent"
                 android:textSize="13sp" />
+
+            <!-- Porcentagem total já ouvida do audiolivro -->
+            <TextView
+                android:id="@+id/percent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:textColor="@color/playing_red"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <SeekBar
                 android:id="@+id/seek"

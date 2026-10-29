@@ -26,4 +26,26 @@
     <string name="sleep_minutes">%1$d minutos</string>
     <string name="sleep_remaining">Dorme em %1$s</string>
     <string name="notification_channel">Reprodução</string>
+
+    <!-- Novas funções: OPUS, porcentagem, ouvido, cadeado e saltos -->
+    <string name="adding_book">Adicionando audiolivro…</string>
+    <string name="percent_listened">%1$d%% ouvido</string>
+    <string name="heard">Ouvido</string>
+    <string name="skip_interval">Intervalo de avançar/retroceder</string>
+    <string name="skip_seconds_option">%1$d segundos</string>
+    <string name="skip_seconds_short">±%1$d s</string>
+    <string name="back_seconds">Voltar %1$d segundos</string>
+    <string name="forward_seconds">Avançar %1$d segundos</string>
+    <string name="lock">Bloquear controles</string>
+    <string name="unlock">Desbloquear controles</string>
+    <string name="lock_hint">🔒 Tela bloqueada\nSegure por 3 segundos para desbloquear</string>
+    <string name="unlocked">Controles desbloqueados</string>
+    <string name="finished_title">Audiobook concluído</string>
+    <string name="finished_message">Você terminou \"%1$s\". Que tal ouvir o próximo da sua biblioteca?</string>
+    <string name="finished_message_last">Você terminou \"%1$s\". Todos os audiobooks da biblioteca já foram ouvidos.</string>
+    <string name="listen_next">Ouvir próximo</string>
+    <string name="not_now">Agora não</string>
+    <string name="notification_rewind">Retroceder</string>
+    <string name="notification_forward">Avançar</string>
+    <string name="resume_finished">Você já ouviu este audiobook. Recomeçando do início.</string>
 </resources>

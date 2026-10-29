@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.meuaudiobook.app.data.Book
+import com.meuaudiobook.app.data.BookProgress
 import com.meuaudiobook.app.data.Library
+import com.meuaudiobook.app.data.MediaInspector
+import com.meuaudiobook.app.data.PlaybackState
 import com.meuaudiobook.app.data.ProgressStore
 import com.meuaudiobook.app.ui.BookAdapter
 
@@ -63,14 +66,26 @@ class MainActivity : AppCompatActivity() {
             ?.ifBlank { getString(R.string.local_files) }
             ?: getString(R.string.local_files)
 
-        Library.addLocalBook(
-            this,
-            title = title,
-            author = getString(R.string.local_files),
-            uris = uris.map { it.toString() }
-        )
-        Toast.makeText(this, R.string.added_book, Toast.LENGTH_SHORT).show()
-        refresh()
+        val selectedUris = uris.toList()
+        Toast.makeText(this, R.string.adding_book, Toast.LENGTH_SHORT).show()
+
+        // Lê duração e capa embutida sem travar a interface.
+        Thread {
+            val inspection = MediaInspector.inspect(this, selectedUris)
+            runOnUiThread {
+                if (isFinishing || isDestroyed) return@runOnUiThread
+                Library.addLocalBook(
+                    this,
+                    title = title,
+                    author = getString(R.string.local_files),
+                    uris = selectedUris.map { it.toString() },
+                    durations = inspection.durations,
+                    coverUri = inspection.coverPath
+                )
+                Toast.makeText(this, R.string.added_book, Toast.LENGTH_SHORT).show()
+                refresh()
+            }
+        }.start()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,7 +98,10 @@ class MainActivity : AppCompatActivity() {
         adapter = BookAdapter(
             subtitleProvider = { book -> subtitleFor(book) },
             onClick = { book -> openPlayer(book) },
-            onLongClick = { book -> confirmRemove(book) }
+            onLongClick = { book -> confirmRemove(book) },
+            progressProvider = { book -> BookProgress.percent(this, book) },
+            playingProvider = { PlaybackState.bookId },
+            finishedProvider = { book -> ProgressStore.isFinished(this, book.id) }
         )
         recycler.adapter = adapter
 
@@ -92,6 +110,23 @@ class MainActivity : AppCompatActivity() {
                 Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
                     addCategory(Intent.CATEGORY_OPENABLE)
                     type = "audio/*"
+                    // Inclui explicitamente OPUS/OGG, que alguns gerenciadores
+                    // de arquivos não listam apenas com "audio/*".
+                    putExtra(
+                        Intent.EXTRA_MIME_TYPES,
+                        arrayOf(
+                            "audio/*",
+                            "audio/mpeg",
+                            "audio/mp4",
+                            "audio/x-m4a",
+                            "audio/ogg",
+                            "audio/opus",
+                            "audio/x-opus+ogg",
+                            "application/ogg",
+                            "audio/flac",
+                            "audio/wav"
+                        )
+                    )
                     putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)

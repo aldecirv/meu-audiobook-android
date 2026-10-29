@@ -20,6 +20,15 @@
         android:orientation="horizontal"
         android:padding="12dp">
 
+        <!-- Faixa vermelha lateral: aparece só no audiolivro em reprodução -->
+        <View
+            android:id="@+id/playingBand"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
+            android:background="@color/playing_red"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/cover"
             android:layout_width="56dp"
@@ -76,4 +85,19 @@
             android:src="@android:drawable/ic_media_play"
             android:tint="@color/accent" />
     </LinearLayout>
+
+    <!-- Barra vermelha de progresso do livro em reprodução -->
+    <ProgressBar
+        android:id="@+id/playingProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="@color/divider"
+        android:progressTint="@color/playing_red"
+        android:visibility="gone" />
 </com.google.android.material.card.MaterialCardView>

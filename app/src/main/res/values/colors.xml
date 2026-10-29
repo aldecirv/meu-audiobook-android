@@ -9,4 +9,9 @@
     <color name="on_accent">#1A1206</color>
     <color name="divider">#252A35</color>
     <color name="ic_bg">#0E0F13</color>
+    <!-- Destaque do audiolivro em reprodução -->
+    <color name="playing_red">#E53935</color>
+    <color name="playing_bg">#2A1214</color>
+    <color name="heard">#7BC67E</color>
+    <color name="lock_overlay">#CC06070A</color>
 </resources>
